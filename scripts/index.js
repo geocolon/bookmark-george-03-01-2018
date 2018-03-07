@@ -1,4 +1,5 @@
-/* global shoppingList, cuid */
+'use strict';
+/* global $, bookmarks, cuid */
 
 // eslint-disable-next-line no-unused-vars
 const store = {
@@ -13,6 +14,6 @@ const store = {
 };
 
 $(document).ready(function() {
-  shoppingList.bindEventListeners();
-  shoppingList.render();
+  bookmarks.bindEventListeners();
+  bookmarks.render();
 });

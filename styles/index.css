@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  background-color: aqua;
 }
 
 body {
@@ -18,7 +19,7 @@ button:hover {
   display: none;
 }
 
-#shopping-list-item {
+#bookmarks-app-item {
   width: 250px;
 }
 
@@ -27,18 +28,18 @@ button:hover {
   margin: 0 auto;
 }
 
-.shopping-list {
+.bookmarks-app {
   list-style: none;
   padding-left: 0;
 }
 
-.shopping-list > li {
+.bookmarks-app > li {
   margin-bottom: 20px;
   border: 1px solid grey;
   padding: 20px;
 }
 
-.shopping-item {
+.bookmarks-app-item {
   display: block;
   color: grey;
   font-style: italic;
@@ -46,6 +47,6 @@ button:hover {
   margin-bottom: 15px;
 }
 
-.shopping-item__checked {
+/* .shopping-item__checked {
   text-decoration: line-through;
-}
+} */

@@ -1,14 +1,15 @@
-/* global store, cuid */
+'use strict';
+/* global store $, cuid */
 
 // eslint-disable-next-line no-unused-vars
-const shoppingList = (function(){
+const bookmarks = (function(){
 
   function generateItemElement(item) {
-    let itemTitle = `<span class="shopping-item shopping-item__checked">${item.name}</span>`;
+    let itemTitle = `<span class="bookmarks-app-item bookmarks-app-item__checked">${item.name}</span>`;
     if (!item.checked) {
       itemTitle = `
         <form id="js-edit-item">
-          <input class="shopping-item type="text" value="${item.name}" />
+          <input class="bookmarks-app-item type="text" value="${item.name}" />
         </form>
       `;
     }
@@ -16,11 +17,11 @@ const shoppingList = (function(){
     return `
       <li class="js-item-element" data-item-id="${item.id}">
         ${itemTitle}
-        <div class="shopping-item-controls">
-          <button class="shopping-item-toggle js-item-toggle">
+        <div class="bookmarks-app-item-controls">
+          <button class="bookmarks-app-item-toggle js-item-toggle">
             <span class="button-label">check</span>
           </button>
-          <button class="shopping-item-delete js-item-delete">
+          <button class="bookmarks-app-item-delete js-item-delete">
             <span class="button-label">delete</span>
           </button>
         </div>
@@ -28,8 +29,8 @@ const shoppingList = (function(){
   }
   
   
-  function generateShoppingItemsString(shoppingList) {
-    const items = shoppingList.map((item) => generateItemElement(item));
+  function generateBookmarksItemsString(bookmarks) {
+    const items = bookmarks.map((item) => generateItemElement(item));
     return items.join('');
   }
   
@@ -46,25 +47,25 @@ const shoppingList = (function(){
       items = store.items.filter(item => item.name.includes(store.searchTerm));
     }
   
-    // render the shopping list in the DOM
+    // render the bookmarks-app list in the DOM
     console.log('`render` ran');
-    const shoppingListItemsString = generateShoppingItemsString(items);
+    const bookmarksItemsString = generateBookmarksItemsString(items);
   
     // insert that HTML into the DOM
-    $('.js-shopping-list').html(shoppingListItemsString);
+    $('.js-bookmarks-app').html(bookmarksItemsString);
   }
   
   
-  function addItemToShoppingList(itemName) {
+  function addItemToBookmarks(itemName) {
     store.items.push({ id: cuid(), name: itemName, checked: false });
   }
   
   function handleNewItemSubmit() {
-    $('#js-shopping-list-form').submit(function (event) {
+    $('#js-bookmarks-app-form').submit(function (event) {
       event.preventDefault();
-      const newItemName = $('.js-shopping-list-entry').val();
-      $('.js-shopping-list-entry').val('');
-      addItemToShoppingList(newItemName);
+      const newItemName = $('.js-bookmarks-app-entry').val();
+      $('.js-bookmarks-app-entry').val('');
+      addItemToBookmarks(newItemName);
       render();
     });
   }
@@ -110,21 +111,21 @@ const shoppingList = (function(){
   
   function handleDeleteItemClicked() {
     // like in `handleItemCheckClicked`, we use event delegation
-    $('.js-shopping-list').on('click', '.js-item-delete', event => {
+    $('.js-bookmarks-app').on('click', '.js-item-delete', event => {
       // get the index of the item in store.items
       const id = getItemIdFromElement(event.currentTarget);
       // delete the item
       deleteListItem(id);
-      // render the updated shopping list
+      // render the updated bookmarks-app list
       render();
     });
   }
   
-  function handleEditShoppingItemSubmit() {
-    $('.js-shopping-list').on('submit', '#js-edit-item', event => {
+  function handleEditBookmarksItemSubmit() {
+    $('.js-bookmarks-app').on('submit', '#js-edit-item', event => {
       event.preventDefault();
       const id = getItemIdFromElement(event.currentTarget);
-      const itemName = $(event.currentTarget).find('.shopping-item').val();
+      const itemName = $(event.currentTarget).find('.bookmarks-app-item').val();
       editListItemName(id, itemName);
       render();
     });
@@ -137,8 +138,8 @@ const shoppingList = (function(){
     });
   }
   
-  function handleShoppingListSearch() {
-    $('.js-shopping-list-search-entry').on('keyup', event => {
+  function handleBookmarksSearch() {
+    $('.js-bookmarks-app-search-entry').on('keyup', event => {
       const val = $(event.currentTarget).val();
       setSearchTerm(val);
       render();
@@ -149,9 +150,9 @@ const shoppingList = (function(){
     handleNewItemSubmit();
     handleItemCheckClicked();
     handleDeleteItemClicked();
-    handleEditShoppingItemSubmit();
+    handleEditBookmarksItemSubmit();
     handleToggleFilterClick();
-    handleShoppingListSearch();
+    handleBookmarksSearch();
   }
 
   // This object contains the only exposed methods from this module:
