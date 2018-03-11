@@ -15,12 +15,18 @@
     </header>
     <main role="main">
     <form id="js-bookmarks-app-form" role="form">
-      <label for="bookmarks-app-entry">Add a Bookmarks</label>
-      <input type="text" name="bookmarks-app-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., broccoli">
+      <label for="bookmarks-title-entry">Add a title</label>
+      <input type="text" id="js-bookmarks-title" name="bookmarks-title-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., Google.com">
+      <label for="bookmarks-url-entry">Add URL</label>
+      <input type="text" id="js-bookmarks-url" name="bookmarks-url-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., www.google.com">
+      <label for="bookmarks-description">Add a description</label>
+      <input type="text" id="js-bookmarks-description" name="bookmarks-description" class="js-bookmarks-app-entry" placeholder="e.g., This is a search engine">
+      <label for="bookmarks-app-entry">Add a Rating</label>
+      <input type="text" id="js-bookmarks-rating" name="bookmarks-app-entry" class="js-bookmarks-app-entry" placeholder="Numbers 1-5 only">
       <button type="submit">Add Bookmarks</button>
       <div>
-        <input type="checkbox" id="filter-checked" class="filter-checked js-filter-checked" />
-        <label for="filter-checked">Hide Checked</label>
+        <!-- <input type="checkbox" id="filter-checked" class="filter-checked js-filter-checked" />
+        <label for="filter-checked">Hide Checked</label> -->
       </div>
       <div>
         <label for="js-bookmarks-app-search-entry">Search:</label>
@@ -35,6 +41,8 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="scripts/bookmarks-app.js"></script>
+  <script type="text/javascript" src="scripts/store.js"></script>
+  <script type="text/javascript" src="scripts/api.js"></script>
   <script type="text/javascript" src="scripts/index.js"></script>
 
 </body>

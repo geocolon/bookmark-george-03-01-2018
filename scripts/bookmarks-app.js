@@ -5,7 +5,7 @@
 const bookmarks = (function(){
 
   function generateItemElement(item) {
-    let itemTitle = `<span class="bookmarks-app-item bookmarks-app-item__checked">${item.name}</span>`;
+    let itemTitle = `<span class="bookmarks-app-item bookmarks-app-item__checked">${item.title}</span>`;
     if (!item.checked) {
       itemTitle = `
         <form id="js-edit-item">
@@ -37,9 +37,9 @@ const bookmarks = (function(){
   
   function render() {
     // Filter item list if store prop is true by item.checked === false
-    let items = store.items;
+    let  = store.bookmarks;
     if (store.hideCheckedItems) {
-      items = store.items.filter(item => !item.checked);
+      items = bookmarks.items.filter(item => !item.checked);
     }
   
     // Filter item list if store prop `searchTerm` is not empty
@@ -56,16 +56,22 @@ const bookmarks = (function(){
   }
   
   
-  function addItemToBookmarks(itemName) {
-    store.items.push({ id: cuid(), name: itemName, checked: false });
+  function addItemToBookmarks(bookmarkName, urlName, details, ratingVal) {
+    this.bookmarks.push({ id: cuid(), title: bookmarkName, url: urlName, desc: details, rating: ratingVal});
   }
   
   function handleNewItemSubmit() {
     $('#js-bookmarks-app-form').submit(function (event) {
       event.preventDefault();
-      const newItemName = $('.js-bookmarks-app-entry').val();
-      $('.js-bookmarks-app-entry').val('');
-      addItemToBookmarks(newItemName);
+      const newBookmarkName = $('#js-bookmarks-title').val();
+      $('#js-bookmarks-title').val('');
+      const urlName = $('#js-bookmarks-url').val();
+      $('#js-bookmarks-url').val('');
+      const details = $('#js-bookmarks-description').val();
+      $('#js-bookmarks-description').val('');
+      const ratingVal = $('#js-bookmarks-rating').val();
+      $('#js-bookmarks-rating').val('');
+      addItemToBookmarks( newBookmarkName, urlName, details, ratingVal );
       render();
     });
   }

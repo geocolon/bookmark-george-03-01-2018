@@ -1,19 +1,18 @@
 'use strict';
-/* global $, bookmarks, cuid */
+/* global $, bookmarks, cuid, api */
 
 // eslint-disable-next-line no-unused-vars
-const store = {
-  items: [
-    { id: cuid(), name: 'apples', checked: false },
-    { id: cuid(), name: 'oranges', checked: false },
-    { id: cuid(), name: 'milk', checked: true },
-    { id: cuid(), name: 'bread', checked: false }
-  ],
-  hideCheckedItems: false,
-  searchTerm: ''
-};
 
 $(document).ready(function() {
   bookmarks.bindEventListeners();
   bookmarks.render();
+
+
+  api.getBookmarks((bookmarks) => {
+    bookmarks.forEach(function(bookmark) { 
+      return store.addBookmark(bookmark); 
+    });
+    const newBookmark = store.bookmarks[0];
+    bookmarks.render();
+  });
 });
