@@ -17,7 +17,7 @@ const store = (function(){
     this.items = this.items.filter(item => item.id !== id);
   };  
   return {
-    items: ["hello"],
+    items: [],
     adding: false,
     condensed: false,
     rating: null,

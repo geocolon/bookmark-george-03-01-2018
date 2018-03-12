@@ -8,10 +8,10 @@ $(document).ready(function() {
 
   api.getBookmarks((items) => {
     items.forEach((bookmark) => store.addBookmark(bookmark));
-    const newBookmark = store.bookmarks[0];
+    // const newBookmark = store.bookmarks[0];
     bookmarks.render();
-
-    bookmarks.bindEventListeners();
-  bookmarks.render();
+  
   });
+  bookmarks.bindEventListeners();
+  bookmarks.render();
 });

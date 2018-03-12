@@ -10,20 +10,20 @@ const api = (function (){
   console.log('`api` ran');
 
   const getBookmarks = function(callback){
-    callback('api getBookmarks module works!');
+    console.log('api getBookmarks module works!');
     $.getJSON(`${BASE_URL}/bookmarks`, callback);
   };
 
-  const createBookmarks = function(title, callback){
-    const newBookmark = JSON.stringify({title});
+  const createBookmarks = function(bookmark, callback){
 
-    return $.ajax({
+    $.ajax({
       url : `${BASE_URL}/bookmarks`,
       method: 'POST',
       contentType: 'application/JSON',
-      data: newBookmark,
+      data: JSON.stringify(bookmark),
       success: callback
     });
+    console.log('createBookmark successfully ran');
   };
   const deleteBookmark = function(id, callback) {
     $.ajax({
@@ -37,6 +37,7 @@ const api = (function (){
 
   return {
     getBookmarks,
-    createBookmarks
+    createBookmarks,
+    deleteBookmark
   };
 })();

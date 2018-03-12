@@ -1,5 +1,5 @@
 'use strict';
-/* global store $, cuid */
+/* global store $, cuid, api */
 
 // eslint-disable-next-line no-unused-vars
 const bookmarks = (function(){
@@ -36,43 +36,50 @@ const bookmarks = (function(){
   
   
   function render() {
-    // Filter item list if store prop is true by item.checked === false
-    let items = store.items;
-    if (store.hideCheckedItems) {
-      items = store.items.filter(item => !item.checked);
-    }
+    api.getBookmarks((bookmarks) => {
+      store.items = bookmarks;
+      // render the bookmarks-app list in the DOM
+      console.log('`render` ran');
+      const bookmarksItemsString = generateBookmarksItemsString(store.items);
   
-    // // Filter item list if store prop `searchTerm` is not empty
-    // if (store.searchTerm) {
-    //   items = store.items.filter(item => item.name.includes(store.searchTerm));
-    // }
-  
-    // render the bookmarks-app list in the DOM
-    console.log('`render` ran');
-    const bookmarksItemsString = generateBookmarksItemsString(store.items);
-  
-    // insert that HTML into the DOM
-    $('.js-bookmarks-app').html(bookmarksItemsString);
+      // insert that HTML into the DOM
+      $('.js-bookmarks-app').html(bookmarksItemsString);
+    });
   }
   
   
-  function addItemToBookmarks(bookmarkName, urlName, details, ratingVal) {
-    this.bookmarks.push({ id: cuid(), title: bookmarkName, url: urlName, desc: details, rating: ratingVal});
-  }
+  // function addItemToBookmarks(bookmarkName, urlName, details, ratingVal) {
+  //   this.bookmarks.push({ 
+  //     id: cuid(),
+  //     title: bookmarkName,
+  //     url: urlName,
+  //     desc: details,
+  //     rating: ratingVal
+  //   });
+  // }
   
   function handleNewItemSubmit() {
     $('#js-bookmarks-app-form').submit(function (event) {
       event.preventDefault();
-      const newBookmarkName = $('#js-bookmarks-title').val();
-      $('#js-bookmarks-title').val('');
-      const urlName = $('#js-bookmarks-url').val();
-      $('#js-bookmarks-url').val('');
-      const details = $('#js-bookmarks-description').val();
-      $('#js-bookmarks-description').val('');
-      const ratingVal = $('#js-bookmarks-rating').val();
+      const newBookmark = { 
+        id: cuid(),
+        title: $('#js-bookmarks-title').val(),      
+        url: $('#js-bookmarks-url').val(),      
+        desc: $('#js-bookmarks-description').val(),
+        rating: $('#js-bookmarks-rating').val()
+      };
       $('#js-bookmarks-rating').val('');
-      addItemToBookmarks( newBookmarkName, urlName, details, ratingVal );
-      render();
+      $('#js-bookmarks-description').val('');
+      $('#js-bookmarks-title').val('');
+      $('#js-bookmarks-url').val('');
+      if(newBookmark.title === '') {
+        alert('Please enter a title');
+        return false;
+      } if(newBookmark.url === '') {
+        alert('Please enter a url');
+        return false;
+      }
+      console.log(api.createBookmarks(newBookmark, render));
     });
   }
   
