@@ -12,8 +12,20 @@ const store = (function(){
   
   const findById = function(id) {
     return this.bookmarks.find(bookmark => bookmark.id === id);
+  };
+  const findAndDelete = function(id) {
+    this.items = this.items.filter(item => item.id !== id);
   };  
+  return {
+    items: ["hello"],
+    adding: false,
+    condensed: false,
+    rating: null,
 
+    addBookmark,
+    findById,
+    findAndDelete
+  };
 }());
 
 

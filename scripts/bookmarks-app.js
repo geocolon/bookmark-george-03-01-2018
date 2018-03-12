@@ -37,19 +37,19 @@ const bookmarks = (function(){
   
   function render() {
     // Filter item list if store prop is true by item.checked === false
-    let  = store.bookmarks;
+    let items = store.items;
     if (store.hideCheckedItems) {
-      items = bookmarks.items.filter(item => !item.checked);
+      items = store.items.filter(item => !item.checked);
     }
   
-    // Filter item list if store prop `searchTerm` is not empty
-    if (store.searchTerm) {
-      items = store.items.filter(item => item.name.includes(store.searchTerm));
-    }
+    // // Filter item list if store prop `searchTerm` is not empty
+    // if (store.searchTerm) {
+    //   items = store.items.filter(item => item.name.includes(store.searchTerm));
+    // }
   
     // render the bookmarks-app list in the DOM
     console.log('`render` ran');
-    const bookmarksItemsString = generateBookmarksItemsString(items);
+    const bookmarksItemsString = generateBookmarksItemsString(store.items);
   
     // insert that HTML into the DOM
     $('.js-bookmarks-app').html(bookmarksItemsString);
