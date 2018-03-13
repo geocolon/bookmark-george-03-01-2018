@@ -14,10 +14,10 @@ const store = (function(){
     return this.bookmarks.find(bookmark => bookmark.id === id);
   };
   const findAndDelete = function(id) {
-    this.items = this.items.filter(item => item.id !== id);
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
   };  
   return {
-    items: [],
+    bookmarks: [],
     adding: false,
     condensed: false,
     rating: null,

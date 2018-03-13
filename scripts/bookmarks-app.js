@@ -61,13 +61,18 @@ const bookmarks = (function(){
   function handleNewItemSubmit() {
     $('#js-bookmarks-app-form').submit(function (event) {
       event.preventDefault();
+       
       const newBookmark = { 
         id: cuid(),
         title: $('#js-bookmarks-title').val(),      
         url: $('#js-bookmarks-url').val(),      
         desc: $('#js-bookmarks-description').val(),
-        rating: $('#js-bookmarks-rating').val()
+        // rating: $('#js-bookmarks-rating').val()
       };
+      if($('#js-bookmarks-rating').val()){
+        newBookmark.rating = $('#js-bookmarks-rating').val();
+      }
+      console.log('Rating for Bookmark ' ,newBookmark.rating);
       $('#js-bookmarks-rating').val('');
       $('#js-bookmarks-description').val('');
       $('#js-bookmarks-title').val('');
@@ -79,7 +84,7 @@ const bookmarks = (function(){
         alert('Please enter a url');
         return false;
       }
-      console.log(api.createBookmarks(newBookmark, render));
+      api.createBookmarks(newBookmark, render);
     });
   }
   
@@ -124,11 +129,12 @@ const bookmarks = (function(){
   
   function handleDeleteItemClicked() {
     // like in `handleItemCheckClicked`, we use event delegation
-    $('.js-bookmarks-app').on('click', '.js-item-delete', event => {
+    $('#js-bookmarks-title').on('click', '.js-item-delete', event => {
       // get the index of the item in store.items
+      console.log('EVENT Listaning ==> ',event);
       const id = getItemIdFromElement(event.currentTarget);
       // delete the item
-      deleteListItem(id);
+      api.findAndDelete(id);
       // render the updated bookmarks-app list
       render();
     });
@@ -137,10 +143,14 @@ const bookmarks = (function(){
   function handleEditBookmarksItemSubmit() {
     $('.js-bookmarks-app').on('submit', '#js-edit-item', event => {
       event.preventDefault();
-      const id = getItemIdFromElement(event.currentTarget);
-      const itemName = $(event.currentTarget).find('.bookmarks-app-item').val();
-      editListItemName(id, itemName);
-      render();
+      
+      const id = $(event.currentTarget).attr('data-item-id');
+      // const itemName = $(event.currentTarget).find('.bookmarks-app-item').val();
+      // editListItemName(id, itemName);
+      api.deleteBookmark(id,() => {
+        store.findAndDelete(id);
+        render();
+      });
     });
   }
   
