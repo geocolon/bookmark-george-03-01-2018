@@ -11,8 +11,7 @@ const bookmarks = (function(){
       itemTitle = `
         <form id="js-edit-item">
         <p class="bookmarks-app-item">${item.title}</p>
-        <p class="bookmarks-app-item"><a herf="${item.url}">${item.url}</a></p>
-        <div class="bookmarks-app-desc hidden"><p>${item.desc}</p></div>
+        <div class="bookmarks-app-desc hidden"><p><span class="bookmarks-app-item">${item.url}</span><br>${item.desc}</p></div>
         <div class="bookmarks-app-rating"><p>Rating of ${item.rating} out of 5</p></div>
         </form>
       `;
@@ -23,7 +22,7 @@ const bookmarks = (function(){
         ${itemTitle}
         <div class="bookmarks-app-item-controls">
           <button class="bookmarks-app-item-toggle js-item-toggle">
-            <span class="button-label">check</span>
+            <span class="button-label">more info</span>
           </button>
           <button class="bookmarks-app-item-delete js-item-delete">
             <span class="button-label">delete</span>
