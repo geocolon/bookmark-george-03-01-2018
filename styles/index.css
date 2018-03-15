@@ -47,6 +47,9 @@ button:hover {
   margin-bottom: 15px;
 }
 
+#submitbtn {
+  background-color: green !important;
+}
 /* .shopping-item__checked {
   text-decoration: line-through;
 } */

@@ -19,13 +19,26 @@
       <input type="text" id="js-bookmarks-title" name="bookmarks-title-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., Google.com">
       <label for="bookmarks-url-entry">Add URL</label>
       <input type="text" id="js-bookmarks-url" name="bookmarks-url-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., www.google.com">
+      <br>
+      <br> 
       <div style="padding:0px 10px;">
         <label for="bookmarks-app-entry">Add a Rating</label>
-      <input type="text" id="js-bookmarks-rating" name="bookmarks-app-entry" class="js-bookmarks-app-entry" placeholder="Numbers 1-5 only">
+      <!-- <input type="text" id="js-bookmarks-rating" name="bookmarks-app-entry" class="js-bookmarks-app-entry" placeholder="Numbers 1-5 only"> -->
+      <select class="js-bookmarks-app-entry" id="js-bookmarks-rating" name="bookmarks-app-entry">
+        <!-- <option value="undefined">no rating</option> -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
     </div>
+    <br>
     <label for="bookmarks-description">Add a description</label>
       <br><textarea type="text" id="js-bookmarks-description" name="bookmarks-description" class="js-bookmarks-app-entry" placeholder="e.g., This is a search engine"></textarea>
-      <button type="submit">Add Bookmarks</button>
+      <br>
+      <br> 
+      <button style="background-color: lightseagreen !important;" id="submitbtn" type="submit">Add Bookmarks</button>
       <div>
         <!-- <input type="checkbox" id="filter-checked" class="filter-checked js-filter-checked" />
         <label for="filter-checked">Hide Checked</label> -->
