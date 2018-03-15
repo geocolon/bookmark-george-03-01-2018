@@ -11,9 +11,9 @@ const bookmarks = (function(){
       itemTitle = `
         <form id="js-edit-item">
         <p class="bookmarks-app-item">${item.title}</p>
-        <p class="bookmarks-app-item">${item.url}</p>
-        <div class="bookmarks-app-desc"><p>${item.desc}</p></div>
-        <div class="bookmarks-app-desc"><p>Rating of ${item.rating} out of 5</p></div>
+        <p class="bookmarks-app-item"><a herf="${item.url}">${item.url}</a></p>
+        <div class="bookmarks-app-desc hidden"><p>${item.desc}</p></div>
+        <div class="bookmarks-app-rating"><p>Rating of ${item.rating} out of 5</p></div>
         </form>
       `;
     }
@@ -50,15 +50,9 @@ const bookmarks = (function(){
       $('.js-bookmarks-app').html(bookmarksItemsString);
     });
   }
-  
-  
-  // function addItemToBookmarks(bookmarkName, urlName, details, ratingVal) {
-  //   this.bookmarks.push({ 
-  //     id: cuid(),
-  //     title: bookmarkName,
-  //     url: urlName,
-  //     desc: details,
-  //     rating: ratingVal
+  // function handleRatingAlert(){
+  //   $('#js-bookmarks-rating').submit(function (event){
+
   //   });
   // }
   
@@ -73,8 +67,10 @@ const bookmarks = (function(){
         desc: $('#js-bookmarks-description').val(),
         // rating: $('#js-bookmarks-rating').val()
       };
-      if($('#js-bookmarks-rating').val()){
+      if($('#js-bookmarks-rating').val() &&  $('#js-bookmarks-rating').val() <= 5){
         newBookmark.rating = $('#js-bookmarks-rating').val();
+      } else {
+        alert('Please enter a rating number from 1 to 5!');
       }
       console.log('Rating for Bookmark ' ,newBookmark.rating);
       $('#js-bookmarks-rating').val('');
@@ -94,7 +90,7 @@ const bookmarks = (function(){
   
   function toggleCheckedForListItem(id) {
     const foundItem = store.items.find(item => item.id === id);
-    foundItem.checked = !foundItem.checked;
+    $(this).toggle('.bookmarks-app-desc');
   }
   
   
@@ -105,10 +101,15 @@ const bookmarks = (function(){
   }
   
   function handleItemCheckClicked() {
-    $('.js-shopping-list').on('click', '.js-item-toggle', event => {
-      const id = getItemIdFromElement(event.currentTarget);
-      toggleCheckedForListItem(id);
-      render();
+    $('.js-bookmarks-app').on('click', '.js-item-toggle', event => {
+      event.preventDefault();
+      console.log('this is the button',event.currentTarget);
+      console.log('this is the button',$('.js-bookmarks-description').hasClass('hidden'));
+      if ($('.bookmarks-app-desc').hasClass('hidden')) {
+        $('.bookmarks-app-desc').removeClass('hidden');
+      } else {
+        $('.bookmarks-app-desc').addClass('hidden');
+      }
     });
   }
   
@@ -143,6 +144,17 @@ const bookmarks = (function(){
     });
   }
   
+  function handleDetailItem() {
+    // like in `handleItemCheckClicked`, we use event delegation
+    $('.js-bookmarks-app').on('click', '.js-item-toggle', event => {
+      // get the index of the item in store.items
+      console.log('EVENT Listaning ==> ',event);
+      const id = getItemIdFromElement(event.currentTarget);
+      // delete the item
+      api.deleteBookmark(id, render);
+      // render the updated bookmarks-app list
+    });
+  }
   // function handleEditBookmarksItemSubmit() {
   //   $('.js-bookmarks-app').on('submit', '#js-edit-item', event => {
   //     event.preventDefault();
