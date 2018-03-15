@@ -1,15 +1,19 @@
 'use strict';
 /* global store $, cuid, api */
-
+//   hidding this ==>      <input class="bookmarks-app-item type="text" value="${item.title}" />
 // eslint-disable-next-line no-unused-vars
 const bookmarks = (function(){
 
   function generateItemElement(item) {
+    console.log('generateItemElement is getting this ==>',item);
     let itemTitle = `<span class="bookmarks-app-item bookmarks-app-item__checked">${item.title}</span>`;
     if (!item.checked) {
       itemTitle = `
         <form id="js-edit-item">
-          <input class="bookmarks-app-item type="text" value="${item.name}" />
+        <p class="bookmarks-app-item">${item.title}</p>
+        <p class="bookmarks-app-item">${item.url}</p>
+        <div class="bookmarks-app-desc"><p>${item.desc}</p></div>
+        <div class="bookmarks-app-desc"><p>Rating of ${item.rating} out of 5</p></div>
         </form>
       `;
     }
@@ -129,30 +133,29 @@ const bookmarks = (function(){
   
   function handleDeleteItemClicked() {
     // like in `handleItemCheckClicked`, we use event delegation
-    $('#js-bookmarks-title').on('click', '.js-item-delete', event => {
+    $('.js-bookmarks-app').on('click', '.js-item-delete', event => {
       // get the index of the item in store.items
       console.log('EVENT Listaning ==> ',event);
       const id = getItemIdFromElement(event.currentTarget);
       // delete the item
-      api.findAndDelete(id);
+      api.deleteBookmark(id, render);
       // render the updated bookmarks-app list
-      render();
     });
   }
   
-  function handleEditBookmarksItemSubmit() {
-    $('.js-bookmarks-app').on('submit', '#js-edit-item', event => {
-      event.preventDefault();
+  // function handleEditBookmarksItemSubmit() {
+  //   $('.js-bookmarks-app').on('submit', '#js-edit-item', event => {
+  //     event.preventDefault();
       
-      const id = $(event.currentTarget).attr('data-item-id');
-      // const itemName = $(event.currentTarget).find('.bookmarks-app-item').val();
-      // editListItemName(id, itemName);
-      api.deleteBookmark(id,() => {
-        store.findAndDelete(id);
-        render();
-      });
-    });
-  }
+  //     const id = $(event.currentTarget).attr('data-item-id');
+  //     // const itemName = $(event.currentTarget).find('.bookmarks-app-item').val();
+  //     // editListItemName(id, itemName);
+  //     api.deleteBookmark(id,() => {
+  //       store.findAndDelete(id);
+  //       render();
+  //     });
+  //   });
+  // }
   
   function handleToggleFilterClick() {
     $('.js-filter-checked').click(() => {
@@ -173,7 +176,7 @@ const bookmarks = (function(){
     handleNewItemSubmit();
     handleItemCheckClicked();
     handleDeleteItemClicked();
-    handleEditBookmarksItemSubmit();
+    // handleEditBookmarksItemSubmit();
     handleToggleFilterClick();
     handleBookmarksSearch();
   }
