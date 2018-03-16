@@ -16,12 +16,12 @@ const bookmarks = (function(){
         </form>
       `;
     }
-  
+
     return `
       <li class="js-item-element" data-item-id="${item.id}">
         ${itemTitle}
         <div class="bookmarks-app-item-controls">
-          <button class="bookmarks-app-item-toggle js-item-toggle">
+          <button class="bookmarks-app-item-toggle js-item-toggle" data-item-id="${item.id}">
             <span class="button-label">more info</span>
           </button>
           <button class="bookmarks-app-item-delete js-item-delete">
@@ -100,17 +100,25 @@ const bookmarks = (function(){
   }
   
   function handleItemCheckClicked() {
+    // $('.js-bookmarks-app').on('click', '.js-item-toggle', event => {
+    //   event.preventDefault();
+    //   console.log('this is the button',event.currentTarget);
+      
+    //   });
     $('.js-bookmarks-app').on('click', '.js-item-toggle', event => {
-      event.preventDefault();
-      console.log('this is the button',event.currentTarget);
-      console.log('this is the button',$('.js-bookmarks-description').hasClass('hidden'));
-      if ($('.bookmarks-app-desc').hasClass('hidden')) {
-        $('.bookmarks-app-desc').removeClass('hidden');
-      } else {
-        $('.bookmarks-app-desc').addClass('hidden');
-      }
+      const bookmarkId = $(event.currentTarget).attr('data-item-id');
+      $(`[data-item-id=${bookmarkId}]`).find('.bookmarks-app-desc').toggleClass('hidden');
+      // $(`[data-bookmark-id=${bookmarkId}]`).find(‘.js-bookmark-link’).toggleClass(‘hidden’);
     });
+    //   $(‘.js-bookmark-descr’).toggleClass(‘hidden’);
+    //   $(‘.js-bookmark-link’).toggleClass(‘hidden’);
+    // if ($('.bookmarks-app-desc').hasClass('hidden')) {
+    //   $('.bookmarks-app-desc').removeClass('hidden');
+    // } else {
+    //   $('.bookmarks-app-desc').addClass('hidden');
   }
+    
+
   
   function deleteListItem(id) {
     const index = store.items.findIndex(item => item.id === id);
