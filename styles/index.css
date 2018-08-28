@@ -7,6 +7,9 @@ body {
   font-family: 'Roboto', sans-serif;
   background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
 }
+a {
+  font-size:0.9rem; 
+}
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -49,6 +52,18 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+h3 {
+  font-size: 2rem;
+}
+
+header {
+  height: 50px;
+  width: 100%;
+  top: 0px;
+  margin: 0px;
+  position: absolute;
+}
 #js-bookmarks-description {
   background-color: #e6e6e6;
   border: 1px solid #ccc;
@@ -60,9 +75,9 @@ button:hover {
 
 .js-item-element {
   min-width: 100%;
-  padding: 10px;
+  padding: 20px;
   margin: 10px 10px; 
-  max-height: 100%px;
+  max-height: 100%;
   background-color: #fff;
 }
 
@@ -82,11 +97,15 @@ button:hover {
 .bookmarks-app-item-controls {
   margin-top:50px;
 }
+.desc-list {
+  color: black;
+  font-size: 1rem;
+}
 
 .js-item-delete {
   margin-top:10px; 
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   border: none;
   border-radius: 10px; 
   background:red;
@@ -138,7 +157,6 @@ button:hover {
 .bookmarks-app-item {
   text-decoration: none;
   color: grey;
-  overflow: auto;
   margin: 15px;
 }
 
@@ -146,9 +164,14 @@ button:hover {
   margin: auto auto;
   background-color: rgb(21, 193, 21);
   border: none;
+  color: #fff;
   max-width: 100%;
   padding: 0.7rem;
   border-radius: 10px;
+}
+
+#main_page {
+  margin-top: 300px;
 }
 /* .shopping-item__checked {
   text-decoration: line-through;
@@ -254,6 +277,14 @@ button:hover {
   .js-item-element {
     text-align: center;
     min-width: 120px;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  a {
+    font-size:1em;
   }
 
 }
