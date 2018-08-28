@@ -3,7 +3,7 @@
 
 With this web application, you can save a website as a bookmark to a list and add your own titles and/or descriptions.
 
-<a href="https://m-socket-messenger.herokuapp.com/">M*Socket</a>
+<a href="https://simplebookmark.netlify.com/">Simple Bookmark</a>
 
 ### How to use it.
 
