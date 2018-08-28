@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Bookmakrs App</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -9,22 +13,33 @@
 </head>
 
 <body>
-  <div class="container">
-    <header role="banner">
-     <h1>Bookmarks App</h1>
-    </header>
+    <!-- <header role="banner">
+    
+      </header> -->
+    
     <main role="main">
     <form id="js-bookmarks-app-form" role="form">
-      <label for="bookmarks-title-entry">Add a title</label>
-      <input type="text" id="js-bookmarks-title" name="bookmarks-title-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., Google.com">
-      <label for="bookmarks-url-entry">Add URL</label>
-      <input type="text" id="js-bookmarks-url" name="bookmarks-url-entry" required="true" class="js-bookmarks-app-entry" placeholder="e.g., www.google.com">
-      <br>
-      <br> 
-      <div style="padding:0px 10px;">
-        <label for="bookmarks-app-entry">Add a Rating</label>
+
+          <div class="row">  
+              <div class="col-12">
+  
+            <label for="bookmarks-title-entry">Add a title</label>
+      <input type="text" id="js-bookmarks-title" name="bookmarks-title-entry" required="true" class="js-bookmarks-app-entry" placeholder="Bookmark title here">
+    </div>
+
+      <div class="col-12">
+          <label for="bookmarks-url-entry">Add URL</label>
+          <input type="text" id="js-bookmarks-url" name="bookmarks-url-entry" required="true" class="js-bookmarks-app-entry" placeholder="URL / www.example.com">
+        </div>
+
+
+    </div>
+
+    <div class="row">
+    <div class="col-6">
+        <label for="bookmarks-app-entry">Rate Bookmark</label>
       <!-- <input type="text" id="js-bookmarks-rating" name="bookmarks-app-entry" class="js-bookmarks-app-entry" placeholder="Numbers 1-5 only"> -->
-      <select class="js-bookmarks-app-entry" id="js-bookmarks-rating" name="bookmarks-app-entry">
+      <select id="js-bookmarks-rating" name="bookmarks-app-entry">
         <!-- <option value="undefined">no rating</option> -->
         <option value="1">1</option>
         <option value="2">2</option>
@@ -32,22 +47,28 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+      
     </div>
-    <br>
+    <div class="col-12">
+       
     <label for="bookmarks-description">Add a description</label>
-      <br><textarea type="text" id="js-bookmarks-description" name="bookmarks-description" class="js-bookmarks-app-entry" placeholder="e.g., This is a search engine"></textarea>
-      <br>
-      <br> 
-      <button style="background-color: lightseagreen !important;" id="submitbtn" type="submit">Add Bookmarks</button>
+    <br><textarea type="text" id="js-bookmarks-description" name="bookmarks-description" class="js-bookmarks-app-entry" placeholder="This is about..."></textarea>
+    <br>
+    <br> 
+    <center><button id="submitbtn" type="submit">Create Bookmarks</button></center>
+    </div>
+    </div>
+      
+   
       <div>
         <!-- <input type="checkbox" id="filter-checked" class="filter-checked js-filter-checked" />
         <label for="filter-checked">Hide Checked</label> -->
       </div>
     </form>
-    <ul class="bookmarks-app js-bookmarks-app">
-    </ul>
+    
   </main>
-  </div>
+  <ul class="bookmarks-app js-bookmarks-app">
+    </ul>
   <footer role="contentinfo"></footer>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
