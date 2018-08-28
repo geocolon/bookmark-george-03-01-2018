@@ -1,5 +1,5 @@
 # Simple Bookmark
-![simple bookmark](https://user-images.githubusercontent.com/7282802/44747386-e90aa880-aac1-11e8-97f7-c1b778da12c2.png)
+![simple_bookmark](https://user-images.githubusercontent.com/7282802/44748327-62a39600-aac4-11e8-9b43-2c2bf026897a.png)
 
 With this web application, you can save a website as a bookmark to a list and add your own titles and/or descriptions.
 
