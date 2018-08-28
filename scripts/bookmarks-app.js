@@ -10,15 +10,15 @@ const bookmarks = (function(){
     if (!item.checked) {
       itemTitle = `
         <form id="js-edit-item">
-        <p class="bookmarks-app-item">${item.title}</p>
-        <div class="bookmarks-app-desc hidden"><p><span class="bookmarks-app-item">${item.url}</span><br>${item.desc}</p></div>
+        <h3 class="bookmarks-app-item"><a href="${item.url}" target="_blank">${item.title}</a></h3>
+        <div class="bookmarks-app-desc hidden"><p><span class="bookmarks-app-item"><a href="${item.url}" target="_blank">Go to the Website</a></span><p class="bookmark-desc">${item.desc}</p></div>
         <div class="bookmarks-app-rating"><p>Rating of ${item.rating} out of 5</p></div>
         </form>
       `;
     }
 
     return `
-      <li class="js-item-element" data-item-id="${item.id}">
+      <li class="js-item-element col-6" data-item-id="${item.id}">
         ${itemTitle}
         <div class="bookmarks-app-item-controls">
           <button class="bookmarks-app-item-toggle js-item-toggle" data-item-id="${item.id}">

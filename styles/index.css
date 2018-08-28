@@ -38,7 +38,7 @@ label {
 
 main {
   background-color: white;
-  padding: 2rem;
+  padding: 1rem;
   max-width: 90%;
   margin: 20px auto 0px auto;
 }
@@ -56,24 +56,49 @@ button:hover {
     border-radius: 25px;
     padding: 12px 30px;
 }
-.js-bookmarks-app-entry {
-  margin: 0px auto;
-  background-color: #e6e6e6;
 
+
+.js-item-element {
+  min-width: 100%;
+  padding: 10px;
+  margin: 10px 10px; 
+  max-height: 100%px;
+  background-color: #fff;
 }
 
 .hidden {
   display: none;
 }
 
+.bookmarks-app-item-toggle {
+  border: none;
+  padding: 20px;
+  color: #fff;
+  margin-right: 1rem; 
+  border-radius: 10px;
+  background-color:blue;
+}
+
+.bookmarks-app-item-controls {
+  margin-top:50px;
+}
+
+.js-item-delete {
+  margin-top:10px; 
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 10px; 
+  background:red;
+}
+
 #bookmarks-app-item {
-  width: 250px;
+
+  padding: 10px;
+  
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-content: space-between;
   width: 100%;
   margin: 0 auto;
 }
@@ -81,20 +106,40 @@ button:hover {
 .bookmarks-app {
   list-style: none;
   padding-left: 0;
+  min-height: 100px;
+  margin-top: 1rem;
 }
 
-.bookmarks-app > li {
-  margin-bottom: 20px;
-  border: 1px solid grey;
-  padding: 20px;
+.flex-container {
+  display: flex;
+  width: 90%;
+  margin: 2em auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: DodgerBlue;
 }
+
+.bookmarks-app > div {
+  background-color: #f1f1f1;
+  width: 250px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.bookmark-desc {
+  font-size: 1rem;
+  color:gray;
+
+}
+
 
 .bookmarks-app-item {
-  display: block;
+  text-decoration: none;
   color: grey;
-  font-style: italic;
-  font-size: 20px;
-  margin-bottom: 15px;
+  overflow: auto;
+  margin: 15px;
 }
 
 #submitbtn {
@@ -127,7 +172,7 @@ button:hover {
   max-width: 1000px;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 0px auto;
+  margin: 10px auto;
 }
 
 /* Clearfix */
@@ -200,9 +245,17 @@ button:hover {
   form {
     max-width: 100%;
   }
+  .flex-container {
+    min-width: 640px;
+  }
   
   * {font-size: 0.5rem;}
   
+  .js-item-element {
+    text-align: center;
+    min-width: 120px;
+  }
+
 }
 
 
