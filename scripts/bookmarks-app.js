@@ -10,9 +10,11 @@ const bookmarks = (function(){
     if (!item.checked) {
       itemTitle = `
         <form id="js-edit-item">
+        <center>
         <h3 class="bookmarks-app-item">${item.title}</h3>
         <div class="bookmarks-app-desc hidden"><p><span class="bookmarks-app-item"><span class="desc-list">link: </span><a href="${item.url}" target="_blank">${item.url}</a></span><p class="bookmark-desc"><span class="desc-list">Desc: </span>${item.desc}</p></div>
         <div class="bookmarks-app-rating"><p>Rating of ${item.rating} out of 5</p></div>
+        </center>
         </form>
       `;
     }
@@ -21,12 +23,14 @@ const bookmarks = (function(){
       <li class="js-item-element col-6" data-item-id="${item.id}">
         ${itemTitle}
         <div class="bookmarks-app-item-controls">
+        <center>
           <button class="bookmarks-app-item-toggle js-item-toggle" data-item-id="${item.id}">
             <span class="button-label">more info</span>
           </button>
           <button class="bookmarks-app-item-delete js-item-delete">
             <span class="button-label">delete</span>
           </button>
+          </center>
         </div>
       </li>`;
   }

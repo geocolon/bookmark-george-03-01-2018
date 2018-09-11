@@ -27,6 +27,8 @@ Click DELETE to permanently delete a bookmark.
 ### Built With
 
 * HTML 5, CSS 3, JQuery, JavaScript, API manipulation.
-* Host on Netlify.com: Netlify, an all-in-one workflow that combines global deployment, continuous integration, and automatic HTTPS.
+* Hosted on Netlify.com: Netlify, an all-in-one workflow that combines global deployment, continuous integration, and automatic HTTPS.
+
+
 
 

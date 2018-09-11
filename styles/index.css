@@ -8,7 +8,7 @@ body {
   background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
 }
 a {
-  font-size:0.9rem; 
+  font-size:1rem; 
 }
 input[type=text], select, textarea {
   width: 100%;
@@ -84,8 +84,10 @@ header {
 .hidden {
   display: none;
 }
-
-.bookmarks-app-item-toggle {
+.bookmarks-app-desc {
+  overflow: hidden;
+}
+.bookmarks-app-item-toggle {  
   border: none;
   padding: 20px;
   color: #fff;
@@ -97,9 +99,11 @@ header {
 .bookmarks-app-item-controls {
   margin-top:50px;
 }
+
 .desc-list {
   color: black;
   font-size: 1rem;
+  overflow: hidden;
 }
 
 .js-item-delete {
@@ -283,10 +287,9 @@ header {
     font-size: 1rem;
   }
 
-  a {
-    font-size:1em;
+  p {
+    font-size:1rem;
   }
-
 }
 
 
